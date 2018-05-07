@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lizmat/P5defined.svg?branch=master)](https://travis-ci.org/lizmat/P5defined)
+
 NAME
 ====
 
@@ -26,7 +28,7 @@ This module tries to mimic the behaviour of the `defined` and `undef` built-ins 
 PORTING CAVEATS
 ===============
 
-Because of some overzealous checks for Perl 5isms, it is necessary to put parentheses when using `undef` as a value.
+Because of some overzealous checks for Perl 5isms, it is necessary to put parentheses when using `undef` as a value. This may change at some point in the future.
 
 AUTHOR
 ======
