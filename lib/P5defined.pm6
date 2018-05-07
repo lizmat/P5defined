@@ -38,7 +38,7 @@ of Perl 5 as closely as possible.
 =head1 PORTING CAVEATS
 
 Because of some overzealous checks for Perl 5isms, it is necessary to put parentheses
-when using C<undef> as a value.
+when using C<undef> as a value.  This may change at some point in the future.
 
 =head1 AUTHOR
 
