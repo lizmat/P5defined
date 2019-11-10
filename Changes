@@ -2,6 +2,9 @@ Revision history for P5defined
 
 {{$NEXT}}
 
+0.0.3  2019-11-10T13:52:07+01:00
+    - changed Perl 6 to Raku, and Perl 5 to Perl
+
 0.0.2  2018-05-18T23:20:03+02:00
     - make defined/undef semantics closer to Perl 5
     - add more tests
