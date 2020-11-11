@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 use P5defined;
 
@@ -14,7 +14,7 @@ my $b = 666;
 ok defined($a), 'is $a defined';
 ok defined($b), 'is $b defined';
 given $a {
-    ok defined(), 'is $_ defined';
+    ok .&defined, 'is $_ defined';
 }
 
 is undef(), Nil, 'does undef() return Nil';
@@ -32,4 +32,4 @@ is undef(%h), Nil, 'does undef(%h) return Nil';
 is @a.elems, 0, 'was array emptied';
 is %h.elems, 0, 'was hash emptied';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

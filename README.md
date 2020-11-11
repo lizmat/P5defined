@@ -1,7 +1,7 @@
 NAME
 ====
 
-P5defined - Implement Perl's defined() / undef() built-ins
+Raku port of Perl's defined() / undef() built-ins
 
 SYNOPSIS
 ========
@@ -21,7 +21,7 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module tries to mimic the behaviour of the `defined` and `undef` built-ins of Perl as closely as possible.
+This module tries to mimic the behaviour of Perl's `defined` and `undef` built-ins as closely as possible in the Raku Programming Language.
 
 ORIGINAL PERL 5 DOCUMENTATION
 =============================
@@ -113,7 +113,28 @@ ORIGINAL PERL 5 DOCUMENTATION
 PORTING CAVEATS
 ===============
 
-Because of some overzealous checks for Perl 5isms, it is necessary to put parentheses when using `undef` as a value. This may change at some point in the future.
+Parentheses
+-----------
+
+Because of some overzealous checks for Perl 5isms, it is necessary to put parentheses when using `undef` as a value. Since the 2018.09 Rakudo compiler release, it is possible to use the `isms` pragma:
+
+    use isms <Perl5>;
+    say undef;    # Nil
+
+$_ no longer accessible from caller's scope
+-------------------------------------------
+
+In future language versions of Raku, it will become impossible to access the `$_` variable of the caller's scope, because it will not have been marked as a dynamic variable. So please consider changing:
+
+    defined;
+
+to either:
+
+    defined($_);
+
+or, using the subroutine as a method syntax, with the prefix `.` shortcut to use that scope's `$_` as the invocant:
+
+    .&defined;
 
 AUTHOR
 ======
@@ -125,7 +146,7 @@ Source can be located at: https://github.com/lizmat/P5defined . Comments and Pul
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 

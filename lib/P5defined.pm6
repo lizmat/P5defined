@@ -1,6 +1,6 @@
-use v6.c;
+use v6.d;
 
-unit module P5defined:ver<0.0.3>:auth<cpan:ELIZABETH>;
+unit module P5defined:ver<0.0.4>:auth<cpan:ELIZABETH>;
 
 proto sub defined(|) is export {*}
 multi sub defined(       --> Bool:D) { (CALLERS::<$_>).defined }
@@ -18,7 +18,7 @@ multi sub undef(\item  --> Nil) { item   = Nil   }
 
 =head1 NAME
 
-P5defined - Implement Perl's defined() / undef() built-ins
+Raku port of Perl's defined() / undef() built-ins
 
 =head1 SYNOPSIS
 
@@ -36,8 +36,8 @@ P5defined - Implement Perl's defined() / undef() built-ins
 
 =head1 DESCRIPTION
 
-This module tries to mimic the behaviour of the C<defined> and C<undef>
-built-ins of Perl as closely as possible.
+This module tries to mimic the behaviour of Perl's C<defined> and C<undef>
+built-ins as closely as possible in the Raku Programming Language.
 
 =head1 ORIGINAL PERL 5 DOCUMENTATION
 
@@ -127,9 +127,31 @@ built-ins of Perl as closely as possible.
 
 =head1 PORTING CAVEATS
 
+=head2 Parentheses
+
 Because of some overzealous checks for Perl 5isms, it is necessary to put
-parentheses when using C<undef> as a value.  This may change at some point
-in the future.
+parentheses when using C<undef> as a value.  Since the 2018.09 Rakudo compiler
+release, it is possible to use the C<isms> pragma:
+
+    use isms <Perl5>;
+    say undef;    # Nil
+
+=head2 $_ no longer accessible from caller's scope
+
+In future language versions of Raku, it will become impossible to access the
+C<$_> variable of the caller's scope, because it will not have been marked as
+a dynamic variable.  So please consider changing:
+
+    defined;
+
+to either:
+
+    defined($_);
+
+or, using the subroutine as a method syntax, with the prefix C<.> shortcut
+to use that scope's C<$_> as the invocant:
+
+    .&defined;
 
 =head1 AUTHOR
 
@@ -140,10 +162,12 @@ Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+# vim: expandtab shiftwidth=4
