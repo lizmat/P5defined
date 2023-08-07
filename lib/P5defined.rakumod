@@ -1,7 +1,7 @@
 use v6.d;
 
 proto sub defined(|) is export {*}
-multi sub defined(       --> Bool:D) { (CALLERS::<$_>).defined }
+multi sub defined(       --> Bool:D) { (CALLER::LEXICAL::<$_>).defined }
 multi sub defined(@array --> Bool:D) { @array.Bool             }
 multi sub defined(%hash  --> Bool:D) { %hash.Bool              }
 multi sub defined(\item  --> Bool:D) { item.defined            }

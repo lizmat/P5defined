@@ -2,9 +2,11 @@ Revision history for P5defined
 
 {{$NEXT}}
 
+0.0.7  2023-08-07T19:25:55+02:00
+    - Limit implicit use of $_ to direct caller only
+
 0.0.6  2023-08-07T19:25:04+02:00
     - Update test file extension
-    - Limit implicit use of $_ to direct caller only
     - Added sponsor link
 
 0.0.5  2021-09-09T11:21:26+02:00
