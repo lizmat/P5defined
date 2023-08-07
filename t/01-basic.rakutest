@@ -2,12 +2,10 @@ use v6.*;
 use Test;
 use P5defined;
 
-plan 15;
+plan 13;
 
 ok defined(::('&defined')),           'is &defined imported?';
-ok !defined(P5defined::{'&defined'}), 'is &defined externally NOT accessible?';
 ok defined(::('&undef')),             'is &undef imported?';
-ok !defined(P5defined::{'&undef'}),   'is &undef externally NOT accessible?';
 
 my $a = 42;
 my $b = 666;

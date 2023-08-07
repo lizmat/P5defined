@@ -1,6 +1,4 @@
-use v6.*;
-
-unit module P5defined:ver<0.0.5>:auth<zef:lizmat>;
+use v6.d;
 
 proto sub defined(|) is export {*}
 multi sub defined(       --> Bool:D) { (CALLERS::<$_>).defined }
@@ -157,12 +155,16 @@ to use that scope's C<$_> as the invocant:
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 Source can be located at: https://github.com/lizmat/P5defined . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2019, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021, 2023 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
